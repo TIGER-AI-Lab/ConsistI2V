@@ -1,0 +1,49 @@
+output_dir: "samples/inference"
+output_name: "long_video"
+
+pretrained_model_path: "TIGER-Lab/ConsistI2V"
+unet_path: null
+unet_ckpt_prefix: "module."
+pipeline_pretrained_path: null
+
+sampling_kwargs:
+  height: 256
+  width: 256
+  n_frames: 16
+  steps: 50
+  ddim_eta: 0.0
+  guidance_scale_txt: 7.5
+  guidance_scale_img: 1.0
+  guidance_rescale: 0.0
+  num_videos_per_prompt: 1
+  frame_stride: 3
+  autoregress_steps: 3
+
+unet_additional_kwargs:
+  variant: null
+  n_temp_heads: 8
+  augment_temporal_attention: true
+  temp_pos_embedding: "rotary" # "rotary" or "sinusoidal"
+  first_frame_condition_mode: "concat"
+  use_frame_stride_condition: true
+  noise_sampling_method: "pyoco_mixed" # "vanilla" or "pyoco_mixed" or "pyoco_progressive"
+  noise_alpha: 1.0
+
+noise_scheduler_kwargs:
+  beta_start: 0.00085
+  beta_end: 0.012
+  beta_schedule: "linear"
+  steps_offset: 1
+  clip_sample: false
+  rescale_betas_zero_snr: false     # true if using zero terminal snr
+  timestep_spacing:       "leading" # "trailing" if using zero terminal snr
+  prediction_type:        "epsilon" # "v_prediction" if using zero terminal snr
+
+
+frameinit_kwargs:
+  enable: true
+  noise_level: 850
+  filter_params:
+    method: 'gaussian'
+    d_s: 0.25
+    d_t: 0.25

@@ -1,0 +1,16 @@
+seeds: random
+
+prompts:
+  - "timelapse at the snow land with aurora in the sky."
+  - "fireworks."
+  - "clown fish swimming through the coral reef."
+  - "melting ice cream dripping down the cone."
+
+n_prompts:
+  - ""
+
+path_to_first_frames:
+  - "assets/example/example_01.png"
+  - "assets/example/example_02.png"
+  - "assets/example/example_03.png"
+  - "assets/example/example_04.png"

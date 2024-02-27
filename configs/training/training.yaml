@@ -1,0 +1,92 @@
+output_dir: "checkpoints"
+pretrained_model_path: "stabilityai/stable-diffusion-2-1-base"
+
+noise_scheduler_kwargs:
+  num_train_timesteps:    1000
+  beta_start:             0.00085
+  beta_end:               0.012
+  beta_schedule:          "linear"
+  steps_offset:           1
+  clip_sample:            false
+  rescale_betas_zero_snr: false     # true if using zero terminal snr
+  timestep_spacing:       "leading" # "trailing" if using zero terminal snr
+  prediction_type:        "epsilon" # "v_prediction" if using zero terminal snr
+
+train_data:
+  dataset:             "joint"
+  pexels_config:
+    enable:            false
+    json_path:         null
+    caption_json_path: null
+    video_folder:      null
+  webvid_config:
+    enable:            true
+    json_path:         "/path/to/webvid/annotation"
+    video_folder:      "/path/to/webvid/data"
+  sample_size:       256
+  sample_duration:   null
+  sample_fps:        null
+  sample_stride:     [1, 5]
+  sample_n_frames:   16
+
+validation_data:
+  prompts:
+    - "timelapse at the snow land with aurora in the sky."
+    - "fireworks."
+    - "clown fish swimming through the coral reef."
+    - "melting ice cream dripping down the cone."
+
+  path_to_first_frames:
+    - "assets/example/example_01.jpg"
+    - "assets/example/example_02.jpg"
+    - "assets/example/example_03.jpg"
+    - "assets/example/example_04.jpg"
+
+  num_inference_steps: 50
+  ddim_eta: 0.0
+  guidance_scale_txt: 7.5
+  guidance_scale_img: 1.0
+  guidance_rescale: 0.0
+  frame_stride: 3
+
+trainable_modules:
+  - "all"
+  # - "conv3ds."
+  # - "tempo_attns."
+
+resume_from_checkpoint: null
+
+unet_additional_kwargs:
+  variant: null
+  n_temp_heads: 8
+  augment_temporal_attention: true
+  temp_pos_embedding: "rotary" # "rotary" or "sinusoidal"
+  first_frame_condition_mode: "concat"
+  use_frame_stride_condition: true
+  noise_sampling_method: "pyoco_mixed" # "vanilla" or "pyoco_mixed" or "pyoco_progressive"
+  noise_alpha: 1.0
+
+cfg_random_null_text_ratio: 0.1
+cfg_random_null_img_ratio: 0.1
+
+use_ema: false
+ema_decay: 0.9999
+
+learning_rate:    5.e-5
+train_batch_size: 3
+gradient_accumulation_steps: 1
+max_grad_norm: 0.5
+
+max_train_epoch:      -1
+max_train_steps:      200000
+checkpointing_epochs: -1
+checkpointing_steps:  2000
+validation_steps:     1000
+
+seed: 42
+mixed_precision: "bf16"
+num_workers: 32
+enable_xformers_memory_efficient_attention: true
+
+is_image: false
+is_debug: false
