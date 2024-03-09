@@ -1,7 +1,7 @@
 # ConsistI2V
 <!-- ### This repo is under construction. Please stay tuned. -->
 
-[**🌐 Homepage**](https://tiger-ai-lab.github.io/ConsistI2V/) | [**📖 arXiv**](https://arxiv.org/abs/2402.04324) | [**🤗 Model**](https://huggingface.co/TIGER-Lab/ConsistI2V) | [**📊 I2V-Bench**](https://drive.google.com/drive/folders/1eg_vtowKZBen74W-A1oeO4bR1K21giks) | [![Replicate](https://replicate.com/cjwbw/consisti2v/badge)](https://replicate.com/cjwbw/consisti2v) 
+[**🌐 Homepage**](https://tiger-ai-lab.github.io/ConsistI2V/) | [**📖 arXiv**](https://arxiv.org/abs/2402.04324) | [**🤗 Model**](https://huggingface.co/TIGER-Lab/ConsistI2V) | [**📊 I2V-Bench**](https://drive.google.com/drive/folders/1eg_vtowKZBen74W-A1oeO4bR1K21giks) | [![Replicate](https://replicate.com/wren93/consisti2v/badge)](https://replicate.com/wren93/consisti2v) 
 
 This repo contains the codebase for the paper "[ConsistI2V: Enhancing Visual Consistency for Image-to-Video Generation](https://arxiv.org/abs/2402.04324)"
 
@@ -9,6 +9,7 @@ We propose ConsistI2V, a diffusion-based method to enhance visual consistency fo
 <img src="https://tiger-ai-lab.github.io/ConsistI2V/static/images/consisti2v_main.png" alt="ConsistI2V">
 
 ## 🔔News
+- **[2024-03-09]: Add Replicate [Demo](https://replicate.com/wren93/consisti2v). Thanks @chenxwh for the effort!**
 - **[2024-02-26]: Release code and [model](https://huggingface.co/TIGER-Lab/ConsistI2V) for ConsistI2V.**
 
 
