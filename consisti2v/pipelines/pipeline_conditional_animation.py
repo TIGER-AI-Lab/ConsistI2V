@@ -620,7 +620,7 @@ class ConditionalAnimationPipeline(DiffusionPipeline):
                 noise=latents.to(device), 
                 timesteps=diffuse_timesteps.to(device)
             )
-            latents = freq_mix_3d(z_T.to(dtype=torch.float32), latents, LPF=self.freq_filter)
+            latents = freq_mix_3d(z_T.to(dtype=torch.float32), latents.to(dtype=torch.float32), LPF=self.freq_filter)
             latents = latents.to(dtype=latents_dtype)
 
         if first_frame_latents is not None:
@@ -656,13 +656,6 @@ class ConditionalAnimationPipeline(DiffusionPipeline):
                     noise_pred = self.unet(latent_model_input, t, encoder_hidden_states=text_embeddings, first_frame_latents=first_frame_latents_input, frame_stride=frame_stride).sample.to(dtype=latents_dtype)
                 else:
                     noise_pred = self.unet(latent_model_input, t, encoder_hidden_states=text_embeddings).sample.to(dtype=latents_dtype)
-                # noise_pred = []
-                # import pdb
-                # pdb.set_trace()
-                # for batch_idx in range(latent_model_input.shape[0]):
-                #     noise_pred_single = self.unet(latent_model_input[batch_idx:batch_idx+1], t, encoder_hidden_states=text_embeddings[batch_idx:batch_idx+1]).sample.to(dtype=latents_dtype)
-                #     noise_pred.append(noise_pred_single)
-                # noise_pred = torch.cat(noise_pred)
 
                 # perform guidance
                 if do_classifier_free_guidance:

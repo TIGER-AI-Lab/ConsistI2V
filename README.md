@@ -9,6 +9,7 @@ We propose ConsistI2V, a diffusion-based method to enhance visual consistency fo
 <img src="https://tiger-ai-lab.github.io/ConsistI2V/static/images/consisti2v_main.png" alt="ConsistI2V">
 
 ## 🔔News
+- **[2024-03-21]: Add Gradio Demo 
 - **[2024-03-09]: Add Replicate [Demo](https://replicate.com/wren93/consisti2v). Thanks @chenxwh for the effort!**
 - **[2024-02-26]: Release code and [model](https://huggingface.co/TIGER-Lab/ConsistI2V) for ConsistI2V.**
 
@@ -53,6 +54,13 @@ python -m scripts.animate \
     sampling_kwargs.num_videos_per_prompt=4 \ # overwrite the configs in the config file
     frameinit_kwargs.filter_params.d_s=0.5
 ```
+
+We also created a Gradio demo for easier use of ConsistI2V. The demo can be launched locally by running the following command:
+```
+conda activate consisti2v
+python app.py
+```
+By default, the demo will be running at `localhost:7860`.
 
 ## Training
 Modify the training configurations in `configs/training/training.yaml` and run the following command to train the model:
