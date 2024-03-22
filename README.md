@@ -9,8 +9,8 @@ We propose ConsistI2V, a diffusion-based method to enhance visual consistency fo
 <img src="https://tiger-ai-lab.github.io/ConsistI2V/static/images/consisti2v_main.png" alt="ConsistI2V">
 
 ## 🔔News
-- **[2024-03-21]: Add Gradio Demo 
-- **[2024-03-09]: Add Replicate [Demo](https://replicate.com/wren93/consisti2v). Thanks @chenxwh for the effort!**
+- **[2024-03-21]: Add Gradio Demo. Run `python app.py` to launch the demo locally.**
+- **[2024-03-09]: Add Replicate [Demo](https://replicate.com/wren93/consisti2v). Thanks [@chenxwh](https://github.com/chenxwh) for the effort!**
 - **[2024-02-26]: Release code and [model](https://huggingface.co/TIGER-Lab/ConsistI2V) for ConsistI2V.**
 
 
