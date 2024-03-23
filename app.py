@@ -52,14 +52,26 @@ class AnimateController:
         img_path = os.path.join(self.savedir, "input_image.png")
         pil_image.save(img_path)
         self.image_resolution = pil_image.size
-        pil_image = pil_image.resize((width_slider, height_slider))
+        original_width, original_height = pil_image.size
         if center_crop:
-            width, height = width_slider, height_slider
-            aspect_ratio = width / height
-            if aspect_ratio > 16 / 10:
-                pil_image = pil_image.crop((int((width - height * 16 / 10) / 2), 0, int((width + height * 16 / 10) / 2), height))
-            elif aspect_ratio < 16 / 10:
-                pil_image = pil_image.crop((0, int((height - width * 10 / 16) / 2), width, int((height + width * 10 / 16) / 2)))
+            crop_aspect_ratio = width_slider / height_slider
+            aspect_ratio = original_width / original_height
+            if aspect_ratio > crop_aspect_ratio:
+                new_width = int(crop_aspect_ratio * original_height)
+                left = (original_width - new_width) / 2
+                top = 0
+                right = left + new_width
+                bottom = original_height
+                pil_image = pil_image.crop((left, top, right, bottom))
+            elif aspect_ratio < crop_aspect_ratio:
+                new_height = int(original_width / crop_aspect_ratio)
+                top = (original_height - new_height) / 2
+                left = 0
+                right = original_width
+                bottom = top + new_height
+                pil_image = pil_image.crop((left, top, right, bottom))
+                
+        pil_image = pil_image.resize((width_slider, height_slider))
         return gr.Textbox.update(value=img_path), gr.Image.update(value=np.array(pil_image))
 
     def animate(
